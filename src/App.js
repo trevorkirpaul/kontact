@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
+import 'antd/dist/antd.css';
 import AppRouter from './components/router/AppRouter';
 
 const store = configureStore();

@@ -13,7 +13,7 @@ export default (state = defaultState, action) => {
         ...state,
         error: action.error,
         loading: action.loading,
-        message: action.loading,
+        message: action.message,
       };
     case 'STATUS:FAIL':
       return {

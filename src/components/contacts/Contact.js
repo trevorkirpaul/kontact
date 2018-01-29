@@ -1,14 +1,34 @@
 import React from 'react';
+import { Card, Icon } from 'antd';
+import styled from 'styled-components';
+
+const ListItem = styled.li`
+  margin-bottom: 10px;
+`;
 
 export default ({ name, age, gender, email, phone, city }) => {
   return (
-    <li>
-      <h4>{name}</h4>
-      <p>Age: {age}</p>
-      <p>gender: {gender}</p>
-      <p>Email: {email}</p>
-      <p>Phone: {phone}</p>
-      <p>City: {city}</p>
-    </li>
+    <ListItem>
+      <Card title={name}>
+        {gender === 'male' ? (
+          <p>
+            <Icon type="man" /> {gender}
+          </p>
+        ) : (
+          <p>
+            <Icon type="woman" /> {gender}
+          </p>
+        )}
+        <p>
+          <Icon type="mail" /> {email}
+        </p>
+        <p>
+          <Icon type="phone" /> {phone}
+        </p>
+        <p>
+          <Icon type="home" /> {city}
+        </p>
+      </Card>
+    </ListItem>
   );
 };

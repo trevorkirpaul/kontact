@@ -1,9 +1,10 @@
 import React from 'react';
+import TitlePanel from '../reusable/TitlePanel';
 
 export default () => {
   return (
     <div>
-      <h1>from welcome</h1>
+      <TitlePanel title="Kontact" subTitle="Not A Real Site" />
     </div>
   );
 };
