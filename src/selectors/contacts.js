@@ -15,5 +15,9 @@ export const filterContacts = (contacts, filterType, query) => {
     return contacts.filter(contact => {
       return contact.state.includes(query);
     });
+  } else if (filterType === 'City') {
+    return contacts.filter(contact => {
+      return contact.city.includes(query);
+    });
   }
 };

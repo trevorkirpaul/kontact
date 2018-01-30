@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import TitlePanel from '../reusable/TitlePanel';
 import ContactsFilter from './ContactsFilter';
 
+const CountWrapper = styled.div`
+  margin: 15px 10px;
+  padding: 0 25px;
+`;
+const CountTitle = styled.h3``;
+
 const List = styled.ul`
   list-style: none;
   margin: 0;
@@ -16,6 +22,12 @@ export default ({ contacts }) => {
       <div>
         <TitlePanel title="Contacts" />
         <ContactsFilter />
+        <CountWrapper>
+          <CountTitle>
+            {contacts.length}{' '}
+            {contacts.length === 1 ? 'contact found' : 'contacts found'}
+          </CountTitle>
+        </CountWrapper>
         <List>
           {contacts.map(contact => <Contact key={contact.id} {...contact} />)}
         </List>

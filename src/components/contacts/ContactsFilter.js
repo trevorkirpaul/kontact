@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setFilterType, setFilterQuery } from '../../actions/filters';
+import {
+  setFilterType,
+  setFilterQuery,
+  resetFilters,
+} from '../../actions/filters';
 import { Input, Button, Menu, Dropdown, Icon } from 'antd';
 import styled from 'styled-components';
 
@@ -17,6 +21,11 @@ const DropdownWrapper = styled.div`
 
 const FieldsWrapper = styled.div`
   margin-bottom: 10px;
+`;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
 
 // component
@@ -45,7 +54,15 @@ export class ContactsFilter extends Component {
     if (this.state.query && this.state.filterType) {
       this.props.setFilterType(this.state.filterType);
       this.props.setFilterQuery(this.state.query);
-      console.log('werks');
+    }
+  };
+
+  // reset filters
+  handleReset = () => {
+    // first check if we even need to reset filters
+    if (this.state.query !== null) {
+      this.props.resetFilters();
+      this.setState({ query: null, filterType: null });
     }
   };
 
@@ -61,7 +78,7 @@ export class ContactsFilter extends Component {
     const { filterType } = this.state;
     return (
       <Wrapper>
-        <h3>Search By Name:</h3>
+        <h3>Search By:</h3>
 
         <DropdownWrapper>
           <Dropdown overlay={filterTypeMenu}>
@@ -80,9 +97,12 @@ export class ContactsFilter extends Component {
           />
         </FieldsWrapper>
 
-        <div>
-          <Button onClick={this.handleSubmit}>Submit</Button>
-        </div>
+        <ButtonsWrapper>
+          <Button type="primary" onClick={this.handleSubmit}>
+            Submit
+          </Button>
+          <Button onClick={this.handleReset}>Reset</Button>
+        </ButtonsWrapper>
       </Wrapper>
     );
   }
@@ -91,6 +111,7 @@ export class ContactsFilter extends Component {
 const mapDispatchToProps = dispatch => ({
   setFilterType: filterType => dispatch(setFilterType(filterType)),
   setFilterQuery: query => dispatch(setFilterQuery(query)),
+  resetFilters: () => dispatch(resetFilters()),
 });
 
 export default connect(null, mapDispatchToProps)(ContactsFilter);

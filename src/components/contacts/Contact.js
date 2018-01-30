@@ -6,7 +6,7 @@ const ListItem = styled.li`
   margin-bottom: 10px;
 `;
 
-export default ({ name, age, gender, email, phone, city }) => {
+export default ({ name, age, gender, email, phone, city, state, country }) => {
   return (
     <ListItem>
       <Card title={name}>
@@ -26,7 +26,7 @@ export default ({ name, age, gender, email, phone, city }) => {
           <Icon type="phone" /> {phone}
         </p>
         <p>
-          <Icon type="home" /> {city}
+          <Icon type="home" /> {city}, {state}, {country}
         </p>
       </Card>
     </ListItem>

@@ -15,6 +15,11 @@ export default (state = defaultState, action) => {
         ...state,
         query: action.query,
       };
+    case 'FILTERS:RESET':
+      return {
+        filterType: null,
+        query: null,
+      };
     default:
       return state;
   }

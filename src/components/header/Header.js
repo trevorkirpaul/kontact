@@ -25,6 +25,11 @@ export default () => {
             <Button type="primary">Contacts</Button>
           </Link>
         </LItem>
+        <LItem>
+          <Link to="/lists">
+            <Button type="primary">Lists</Button>
+          </Link>
+        </LItem>
       </List>
     </Wrapper>
   );
