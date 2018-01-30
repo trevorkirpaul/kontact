@@ -2,6 +2,7 @@ import React from 'react';
 import Contact from './Contact';
 import styled from 'styled-components';
 import TitlePanel from '../reusable/TitlePanel';
+import ContactsFilter from './ContactsFilter';
 
 const List = styled.ul`
   list-style: none;
@@ -10,14 +11,13 @@ const List = styled.ul`
 `;
 
 export default ({ contacts }) => {
-  if (contacts.data) {
+  if (contacts) {
     return (
       <div>
-        <TitlePanel title="Contacts" subTitle="Find all" />
+        <TitlePanel title="Contacts" />
+        <ContactsFilter />
         <List>
-          {contacts.data.map(contact => (
-            <Contact key={contact.id} {...contact} />
-          ))}
+          {contacts.map(contact => <Contact key={contact.id} {...contact} />)}
         </List>
       </div>
     );
