@@ -1,15 +1,40 @@
 import React from 'react';
-import { Card, Icon } from 'antd';
+import { Card, Icon, Button } from 'antd';
 import styled from 'styled-components';
 
 const ListItem = styled.li`
   margin-bottom: 10px;
 `;
 
-export default ({ name, age, gender, email, phone, city, state, country }) => {
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export default ({
+  name,
+  age,
+  gender,
+  email,
+  phone,
+  city,
+  state,
+  country,
+  id,
+  showModal,
+  disabled,
+}) => {
+  const header = (
+    <HeaderWrapper>
+      {name}
+      <Button disabled={disabled} onClick={() => showModal(id, name)}>
+        Add To List
+      </Button>
+    </HeaderWrapper>
+  );
   return (
     <ListItem>
-      <Card title={name}>
+      <Card title={header}>
         {gender === 'male' ? (
           <p>
             <Icon type="man" /> {gender}

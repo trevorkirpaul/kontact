@@ -16,7 +16,7 @@ const List = styled.ul`
   padding: 25px;
 `;
 
-export default ({ contacts }) => {
+export default ({ contacts, showModal, disabled }) => {
   if (contacts) {
     return (
       <div>
@@ -29,7 +29,14 @@ export default ({ contacts }) => {
           </CountTitle>
         </CountWrapper>
         <List>
-          {contacts.map(contact => <Contact key={contact.id} {...contact} />)}
+          {contacts.map(contact => (
+            <Contact
+              key={contact.id}
+              {...contact}
+              showModal={showModal}
+              disabled={disabled}
+            />
+          ))}
         </List>
       </div>
     );

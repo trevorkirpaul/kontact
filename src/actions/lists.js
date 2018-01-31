@@ -13,3 +13,9 @@ export const deleteList = listID => ({
   type: 'LISTS:DELETE',
   listID,
 });
+
+export const addContact = (contactID, listID) => ({
+  type: 'LISTS:ADD_TO_LIST',
+  contactID,
+  listID,
+});
