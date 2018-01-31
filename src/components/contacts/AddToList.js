@@ -28,9 +28,11 @@ export const AddToList = ({
   id,
   name,
   lists,
+  listID,
+  setListIDtoState,
 }) => {
   const listMenu = (
-    <Menu>
+    <Menu onClick={e => setListIDtoState(e.key)}>
       {lists.map(list => <Menu.Item key={list.id}>{list.name}</Menu.Item>)}
     </Menu>
   );
@@ -39,7 +41,7 @@ export const AddToList = ({
       title="Add Contact To List"
       visible={visible}
       onCancel={hideModal}
-      onOk={() => handleAdd(id)}
+      onOk={handleAdd}
     >
       <DropDownWrapper>
         <Dropdown overlay={listMenu}>
@@ -49,6 +51,8 @@ export const AddToList = ({
         </Dropdown>
       </DropDownWrapper>
       <p style={fadedStyle}>ContactID: {id}</p>
+      {listID && <p style={fadedStyle}>ListID: {listID}</p>}
+
       <p>
         Are you sure you want to add <span style={spanStyle}>{name}</span> to
         the list?

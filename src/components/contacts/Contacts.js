@@ -24,8 +24,9 @@ export default ({ contacts, showModal, disabled }) => {
         <ContactsFilter />
         <CountWrapper>
           <CountTitle>
-            {contacts.length}{' '}
-            {contacts.length === 1 ? 'contact found' : 'contacts found'}
+            {contacts.length === 1
+              ? `${contacts.length} contact found`
+              : `${contacts.length} contacts found`}
           </CountTitle>
         </CountWrapper>
         <List>

@@ -14,7 +14,7 @@ export const deleteList = listID => ({
   listID,
 });
 
-export const addContact = (contactID, listID) => ({
+export const addContactToList = (contactID, listID) => ({
   type: 'LISTS:ADD_TO_LIST',
   contactID,
   listID,

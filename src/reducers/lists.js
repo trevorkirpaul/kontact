@@ -8,25 +8,22 @@ export default (state = defaultState, action) => {
       return state.filter(list => list.id !== action.listID);
     case 'LISTS:ADD_TO_LIST':
       return state.map(list => {
-        // find list
+        // find the correct list to
+        // add contact to
         if (list.id === action.listID) {
-          // check if contact exists in list
-          const included = list.members.filter(
-            member => member.id === action.contactID
-          );
-          if (included.length === 0) {
-            // add to list
-            return (list.members = [
-              ...list.members,
-              { id: action.contactID, name: action.contactID },
-            ]);
+          // check if contact added
+          if (list.members.includes(action.contactID)) {
+            return list;
           } else {
-            // return original array
-            //  if already added
-            return list.members;
+            // create new arr w/contactID
+            // return list with new contactID in members arr
+            const newMembers = [...list.members, action.contactID];
+            return {
+              ...list,
+              members: newMembers,
+            };
           }
         } else {
-          // return lists not being modified
           return list;
         }
       });
